@@ -78,15 +78,4 @@ def str_idx(corpus, dic, maxlen, UNK=3):
     return X
 
 
-# if __name__ == "__main__":
-#     text = "With the development of Internet technology, people's learning and life " \
-#            "has been inseparable from the network. In the future, human life and " \
-#            "learning will depend more and more on the development of digital technology, " \
-#            "more and more digital, networked, electronic and virtualized. As more and more " \
-#            "network services are accepted by users, their requirements for service quality " \
-#            "are becoming higher and higher. In order to compete for more users in the future," \
-#            " network service providers have been studying how to obtain more accurate " \
-#            "information about the experience and satisfaction of network service users for " \
-#            "further improvement and improvement."
-#     result = clearstring(text)
-#     print(result)
+
