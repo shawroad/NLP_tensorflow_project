@@ -384,33 +384,3 @@ for i in range(epoch):
 #     print('REAL:',train_data.vocab['idx2word'][batch_answers[i,0]])
 #     print('PREDICT:',train_data.vocab['idx2word'][logits[i,0]],'\n')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
