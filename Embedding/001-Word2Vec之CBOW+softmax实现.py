@@ -1,6 +1,6 @@
 """
 
-@file   : 001-CBOW之softmax实现.py
+@file   : 001-Word2Vec之CBOW+softmax实现
 
 @author : xiaolu
 
