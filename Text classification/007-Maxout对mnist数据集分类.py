@@ -23,6 +23,7 @@ y_test = to_categorical(y_test)
 
 
 def max_out(inputs, num_units, axis=None):
+    # max_out可以简单理解为: 上层是100各神经元,我们将100分成50组, 每组挑一个最大的.就挑出50个,然后将其送到下一层
     # max_out(z, 50) z为上一层的输出　shape=(batch, 100), 50为这一层保存的单元
     # 可能是想从上层100维的输出中保存激活最大的50维
     # get_shape()这个函数只是用于获取输入的shape
