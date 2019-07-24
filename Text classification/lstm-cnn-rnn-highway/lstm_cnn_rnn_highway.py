@@ -7,25 +7,6 @@
 @time  : 2019-07-24
 
 """
-
-"""
-
-@file  : lstm_bahdanau.py
-
-@author: xiaolu
-
-@time  : 2019-07-24
-
-"""
-"""
-
-@file  : lstm_luong注意力.py
-
-@author: xiaolu
-
-@time  : 2019-07-23
-
-"""
 from utils import *
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
