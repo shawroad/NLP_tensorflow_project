@@ -18,7 +18,6 @@ from datetime import timedelta
 
 sns.set()
 tf.random.set_random_seed(1234)
-# tf.compat.v1.random.set_random_seed(1234)
 
 df = pd.read_csv('./dataset/GOOG-year.csv')
 # print(df.head())
