@@ -99,6 +99,7 @@ class Model:
             z = tf.nn.dropout(z, keep_prob=dropout)
             encoder_embedded = z
 
+        # 编码器的输出为z　 还有记忆　也就是将输出和词嵌入的那部分进行对应位加法
         encoder_output, output_memory = z, z + e
 
         g = tf.identity(encoder_embedded)
@@ -110,20 +111,20 @@ class Model:
 
             C = []
             for j in range(n_attn_heads):
-                h_ = tf.layers.dense(h, size_layer // n_attn_heads)
-                g_ = tf.layers.dense(g, size_layer // n_attn_heads)
-                zu_ = tf.layers.dense(encoder_output, size_layer // n_attn_heads)
+                h_ = tf.layers.dense(h, size_layer // n_attn_heads)  # 经过解码gate_conv的输出
+                g_ = tf.layers.dense(g, size_layer // n_attn_heads)  # 编码器的输出　然后经过一个全连接
 
+                zu_ = tf.layers.dense(encoder_output, size_layer // n_attn_heads)  # 代表编码器的输出
                 ze_ = tf.layers.dense(output_memory, size_layer // n_attn_heads)
 
-                d = tf.layers.dense(h_, size_layer // n_attn_heads) + g_
-                dz = tf.matmul(d, tf.transpose(zu_, [0, 2, 1]))
-                a = tf.nn.softmax(dz)
+                d = tf.layers.dense(h_, size_layer // n_attn_heads) + g_  # 经过gate_conv的输出, 在进行全连接　并加入编码的输出(注意力)
+                dz = tf.matmul(d, tf.transpose(zu_, [0, 2, 1]))  # 解码器的输出和编码器的输出算相关系数
+                a = tf.nn.softmax(dz)  # 接着经过softmax　得到对应的注意力
                 c_ = tf.matmul(a, ze_)
                 C.append(c_)
 
             c = tf.concat(C, 2)
-            h = tf.layers.dense(attn_res + c, size_layer)
+            h = tf.layers.dense(attn_res + c, size_layer)  # 解码的输出和上面一堆注意力运算的结果进行加和　最后经过dense
             h = tf.nn.dropout(h, keep_prob=dropout)
             encoder_embedded = h
 
